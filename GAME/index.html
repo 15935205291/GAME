@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		*{margin: 0;padding: 0}
+		#content{
+			width: 500px;
+			height: 500px;
+			border:1px solid red;
+			margin: 10px auto;
+			background: #c4c4c4;
+			position: relative;
+		}
+		#qiu{
+			position: absolute;
+			top: 0;left: 0;
+		}
+	</style>
+</head>
+<body>
+	<div id="content">
+		<img id="qiu" src="images/b1.gif">
+	</div>
+		<script>
+		var Qiu = document.getElementById('qiu');
+		document.onkeydown = function(event){
+			var e = window.event || event;
+		
+			
+			//设置移动步长
+			var step = 10;    
+			switch(e.keyCode){
+				case 87:
+					//Qiu.style.top = '10px';
+					//Qiu.style.top = Qiu.offsetTop-step+'px';
+					Qiu.style.top = Math.max(0,Qiu.offsetTop-step)+'px';
+
+					changeTu('u1.gif','u2.gif');
+
+				   break;
+				case 83:
+					//Qiu.style.top = '10px';
+					//Qiu.style.top = Qiu.offsetTop+step+'px';
+
+					Qiu.style.top = Math.min(460,Qiu.offsetTop+step)+'px';
+					changeTu('b1.gif','b2.gif');
+					break;
+				case 65:
+				//Qiu.style.left = Qiu.offsetLeft-step+'px';
+				Qiu.style.left = Math.max(0,Qiu.offsetLeft-step)+'px';
+				changeTu('l1.gif','l2.gif');
+					break;
+				case 68:
+				//Qiu.style.left = Qiu.offsetLeft+step+'px';
+				
+
+				Qiu.style.left = Math.min(460,Qiu.offsetLeft+step)+'px';
+				changeTu('r1.gif','r2.gif');
+					break; 
+
+			}
+		}
+			
+			function changeTu(img1,img2){
+				var newTu = Qiu.src.substr(Qiu.src.lastIndexOf('/'));
+
+				if(newTu ==img1){
+					Qiu.src = 'images/'+img2;
+				}else{
+					Qiu.src = 'images/'+img1;
+				}
+			}
+
+				
+			
+
+
+		</script>
+</body>
+</html>
